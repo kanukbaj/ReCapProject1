@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.CarName.Length<2 && car.DailyPrice<0)
+            if (car.Description.Length<2 && car.DailyPrice<0)
             {
                 return new ErrorResult(Messages.CarNameInvalidAndDailyPriceInvalid);
             }
@@ -36,7 +36,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult(Messages.CarDeleted)
+            return new SuccessResult(Messages.CarDeleted);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -59,17 +59,17 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
             }
-            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarListed);
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
+            return new SuccesDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
 
         public IResult Update(Car car)

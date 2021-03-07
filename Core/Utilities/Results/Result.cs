@@ -19,6 +19,6 @@ namespace Core.Utilities.Results
 
         public bool Success { get; }
 
-        public string Message { get; } //get readonly dir ve Constructors a set edilebilirler.
+        public string Message { get; } //get readonly dir ve Constructors ile set edilebilirler.
     }
 }

@@ -16,7 +16,7 @@ namespace Business.Concrete
         //çünkü referans (interface) üzerinden bağımlıyım.
 
         IColorDal _colorDal;
-        public ColorManager(EfColorDal colorDal)
+        public ColorManager(IColorDal colorDal)
         {
             _colorDal = colorDal;
         }
@@ -35,7 +35,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetAll()
         {
-            return new SuccesDataResult<List<Color>>(_colorDal.GetAll());
+            return new SuccesDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorListed);
         }
 
         public IDataResult<Color> GetById(int colorId)
