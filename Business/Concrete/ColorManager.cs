@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class ColorManager : IColorService
+  public  class ColorManager : IColorService
     {
         //bu şöyle diyor ben ColorManager olarak veri eişim katmanına zayıf bağımlıyım
         //çünkü referans (interface) üzerinden bağımlıyım.
