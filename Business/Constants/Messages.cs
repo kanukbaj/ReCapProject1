@@ -26,5 +26,7 @@ namespace Business.Constants
         public static string CarNameInvalidAndDailyPriceInvalid = "Araba ismi ve Günlük ücret geçersiz";
         internal static string MaintenanceTime = "Arabalar Bakımda :)";
         internal static string CarListed = "Arabalar Listelendi";
+
+        public static string Successful { get; internal set; }
     }
 }
