@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.DataAccess
 {
-   public interface IEntityRepository<T> where T:class, IEntity, new()
+   public interface IEntityRepository<T> where T : class, IEntity, new()
     {
         //Generic constraint
         //class : referans tip
