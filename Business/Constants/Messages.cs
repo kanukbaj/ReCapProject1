@@ -53,7 +53,20 @@ namespace Business.Constants
         public static string CarImageDeleted = "Araç resmi silindi";
         public static string CarImageUpdated = "Araç resmi güncellendi";
 
-        public static string Successful { get; internal set; }
-       
+        public static string UserNameInvalid = "User name is invalid.";
+        public static string UsersListed = "Users have been listed.";
+        public static string CarCountOfBrandError = "The brand can have a max of 15 cars.";
+        public static string CarImageLimit = "Car image limit is exceeded.";
+        public static string AuthorizationDenied = "You have no authority.";
+        public static string UserRegistered = "User registered.";
+        public static string UserNotFound = "User not found.";
+        public static string AccessTokenCreated = "Access token created.";
+        public static string UserAlreadyExists = "User already exists.";
+        public static string SuccessfulLogin = "Login is successful.";
+        public static string PasswordError = "Password is wrong.";
+
+        
+        public static string CustomerNameInvalid = "Customer name is invalid.";
+        public static string CustomersListed = "Customers have been listed.";
     }
 }

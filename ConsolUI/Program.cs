@@ -1,13 +1,10 @@
 ﻿using Business.Concrete;
-using Colorful;
-using DataAccess.Abstract;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using Console = Colorful.Console;
+
 
 namespace ConsoleUI
 {
