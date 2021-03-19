@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
@@ -20,11 +21,12 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        [SecuredOperation("user.add,admin")]
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _userDal.Add(user);
-            return new SuccessResult("New User Added");
+            return new SuccessResult(Messages.UserAdded);
         }
 
         public IResult Delete(User user)
@@ -40,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAllById(int Id)
         {
-            return new SuccesDataResult<List<User>>(_userDal.GetAll(u => u.UserId == Id));
+            return new SuccesDataResult<List<User>>(_userDal.GetAll(u => u.Id == Id));
         }
 
         public IDataResult<User> GetByMail(string email)
@@ -55,7 +57,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetUserById(int id)    
         {
-            return new SuccesDataResult<User>(_userDal.Get(c => c.UserId == id));
+            return new SuccesDataResult<User>(_userDal.Get(c => c.Id == id));
         }
 
 

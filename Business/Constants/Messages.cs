@@ -68,5 +68,8 @@ namespace Business.Constants
         
         public static string CustomerNameInvalid = "Customer name is invalid.";
         public static string CustomersListed = "Customers have been listed.";
+        
+        public static string SuccessfullLogin;
+        public static string UserListed;
     }
 }

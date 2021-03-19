@@ -26,7 +26,7 @@ namespace Business.Concrete
         {
             var claims = _userService.GetClaims(user).Data;
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return new SuccesDataResult<AccessToken>(accessToken, Message.AccessToekenCreated);
+            return new SuccesDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -34,19 +34,19 @@ namespace Business.Concrete
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck.Data ==null)
             {
-                return new ErrorDataResult<User>(Message.UserNotFound);
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password,userToCheck.Data.PasswordHash,userToCheck.Data.PasswordSalt))
             {
-                return new ErrorDataResult<User>(Message.PasswordError);
+                return new ErrorDataResult<User>(Messages.PasswordError);
             }
-            return new SuccesDataResult<User>(userToCheck.Data, Message.SuccessfullLogin);
+            return new SuccesDataResult<User>(userToCheck.Data, Messages.SuccessfullLogin);
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePAsswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
             var user = new User
             {
                 Email = userForRegisterDto.Email,
@@ -57,14 +57,14 @@ namespace Business.Concrete
                 Status = true
             };
             _userService.Add(user);
-            return new SuccesDataResult<User>(user, Message.UserRegistered);
+            return new SuccesDataResult<User>(user, Messages.UserRegistered);
         }
 
         public IResult UserExists(string email)
         {
             if (_userService.GetByMail(email).Data !=null)
             {
-                return new ErrorResult(Message.UserAlreadyExists);
+                return new ErrorResult(Messages.UserAlreadyExists);
             }
             return new SuccessResult();
         }
